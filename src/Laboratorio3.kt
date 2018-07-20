@@ -1,6 +1,7 @@
 package main
 
 import listaDeTareas.listaDeTareas
+import nombreDeTareas.nombreDeTareas
 
 fun main(args: Array<String>){
 
@@ -12,12 +13,22 @@ fun main(args: Array<String>){
                 Seleccione una opcion:""".trimIndent()
         }
 
-        return """\nMenu:
+        return """Menu:
                 1. Crear lista de tareas
                 2. Ver listas de tareas
                 3. Seleccionar una lista de tareas
                 4. Salir
                 Seleccione una opcion:""".trimIndent()
+    }
+
+    fun listMenu(): String{
+        return """Menu:
+            1. Volver
+            2. Agregar una tarea
+            3. Completar una tarea
+            4. Ver todas las tareas en una lista
+            5. Salir
+        """.trimIndent()
     }
 
     fun opcionMenus(taskListIndices: Int): Boolean{
@@ -68,13 +79,52 @@ fun main(args: Array<String>){
                 }
 
                 "2" -> {
+
                     for (i in taskList.indices){
-                        print("Nombre de la lista: " + taskList[i].getListName())
+                        println("Nombre de la lista: " + taskList[i].getListName())
                     }
                 }
 
                 "3" -> {
-                    print("Lol")
+                    var isOnList: Boolean = true
+                    println("Listas:")
+                    for (i in taskList.indices){
+                        println("${i + 1}. " + taskList[i].getListName())
+                    }
+                    print("Ingrese numero de lista: ")
+                    var listNumber: String = readLine()!!
+                    var indice = listNumber.toInt()
+                    indice --
+
+                    do{
+                        println(listMenu())
+                        when (listNumber){
+                            "1" -> {
+                               isOnList = false
+                            }
+                            "2" -> {
+                                print("Ingrese una tarea: ")
+                                var taskName: String = readLine()!!
+                                var task = nombreDeTareas(taskName)
+                                taskList[indice].setTasksOnList(task)
+                            }
+                            "3" -> {
+                                println("Tareas: ")
+                                for (i in taskList.indices){
+                                    println("${i + 1}. " + taskList[i].getTasksOnList())
+                                }
+                                print("Ingrese numero de tarea a completar: ")
+                                var taskNum: String = readLine()!!
+                                var index = taskNum.toInt()
+                                index --
+                                taskList[indice].removeTaskOnList(index)
+                            }
+                            "4" -> {
+                                
+                            }
+                        }
+                    }while (isOnList)
+
                 }
 
                 "4" -> {

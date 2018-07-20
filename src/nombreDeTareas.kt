@@ -3,8 +3,8 @@ package nombreDeTareas
 class nombreDeTareas(
         private var taskName: String
 ){
-    fun nombreDeTareas(){
-
+    fun nombreDeTareas(name: String){
+        setTaskName(name)
     }
 
     fun setTaskName(name: String){

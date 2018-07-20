@@ -7,10 +7,6 @@ class listaDeTareas (
         private var tareas: ArrayList<nombreDeTareas> = ArrayList<nombreDeTareas>()
 
 ) {
-    fun listaDeTareas(listName: String){
-        setListName(listName)
-    }
-
     fun setTasksOnList(taskName: nombreDeTareas){
         tareas.add(taskName)
     }
@@ -22,7 +18,7 @@ class listaDeTareas (
 
     fun getTasksOnList(){
         for (i in tareas.indices){
-            println("${i + 1}. $tareas[i]")
+            println("${i + 1}. ${tareas[i]}")
         }
     }
 

@@ -26,7 +26,7 @@ fun main(args: Array<String>){
             1. Volver
             2. Agregar una tarea
             3. Completar una tarea
-            4. Ver todas las tareas en una lista
+            4. Ver todas las tareas en la lista
             5. Salir
         """.trimIndent()
     }
@@ -98,7 +98,9 @@ fun main(args: Array<String>){
 
                     do{
                         println(listMenu())
-                        when (listNumber){
+                        print("Ingrese una opcion: ")
+                        var op: String = readLine()!!
+                        when (op){
                             "1" -> {
                                isOnList = false
                             }
@@ -120,7 +122,11 @@ fun main(args: Array<String>){
                                 taskList[indice].removeTaskOnList(index)
                             }
                             "4" -> {
-                                
+                                taskList[indice].getTasksOnList()
+                            }
+                            "5" -> {
+                                isOnList = false
+                                wantsToContinue = false
                             }
                         }
                     }while (isOnList)

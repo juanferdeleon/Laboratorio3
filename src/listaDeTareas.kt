@@ -22,6 +22,10 @@ class listaDeTareas (
         }
     }
 
+    fun tasksIndex(): IntRange{
+        return tareas.indices
+    }
+
     fun setListName(name: String){
         listName = name
     }

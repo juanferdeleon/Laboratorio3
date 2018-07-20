@@ -112,9 +112,7 @@ fun main(args: Array<String>){
                             }
                             "3" -> {
                                 println("Tareas: ")
-                                for (i in taskList.indices){
-                                    println("${i + 1}. " + taskList[i].getTasksOnList())
-                                }
+                                taskList[indice].getTasksOnList()
                                 print("Ingrese numero de tarea a completar: ")
                                 var taskNum: String = readLine()!!
                                 var index = taskNum.toInt()
